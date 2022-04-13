@@ -1,12 +1,15 @@
-const images = document.getElementById("images");
+const container = document.getElementById("container");
+const img = document.querySelector("img");
 
-const allImgs = images.querySelectorAll("img");
-let idx = 0;
+container.addEventListener("mousemove", (e) => {
+  const x = e.clientX - e.target.offsetLeft;
+  const y = e.clientY - e.target.offsetTop;
 
-function slideshow() {
-  idx++;
-  if (idx > allImgs.length - 1) idx = 0;
-  images.style.transform = `translateX(${-idx * 500}px)`;
-}
+  img.style.transformOrigin = `${x}px ${y}px`;
+  img.style.transform = "scale(2)";
+});
 
-setInterval(slideshow, 2000);
+container.addEventListener("mouseleave", () => {
+  img.style.transformOrigin = "center center";
+  img.style.transform = "scale(1)";
+});
