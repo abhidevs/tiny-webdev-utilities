@@ -1,17 +1,12 @@
-const btn = document.getElementById("btn");
-const container = document.getElementById("container");
+const text = `Errors always interrupt the development, Just console.log the error and move on :)`;
 
-btn.addEventListener("click", () => {
-  createNotification("You got a new notification!");
-});
+let idx = 0;
 
-function createNotification(text) {
-  const notif = document.createElement("div");
-  notif.classList.add("toast");
-  notif.innerText = text;
+function writeText(text) {
+  document.body.innerText = text.slice(0, idx);
+  idx++;
 
-  container.appendChild(notif);
-  setTimeout(() => {
-    notif.remove();
-  }, 3000);
+  if (idx > text.length) idx = 0;
 }
+
+setInterval(() => writeText(text), 100);
