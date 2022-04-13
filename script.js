@@ -1,12 +1,11 @@
-const text = `Errors always interrupt the development, Just console.log the error and move on :)`;
+const openBtn = document.getElementById("open");
+const closeBtn = document.getElementById("close");
+const container = document.getElementById("container");
 
-let idx = 0;
+openBtn.addEventListener("click", () => {
+  container.classList.add("active");
+});
 
-function writeText(text) {
-  document.body.innerText = text.slice(0, idx);
-  idx++;
-
-  if (idx > text.length) idx = 0;
-}
-
-setInterval(() => writeText(text), 100);
+closeBtn.addEventListener("click", () => {
+  container.classList.remove("active");
+});
